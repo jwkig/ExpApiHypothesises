@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Name="mainWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Height="25" Margin="5" Content="{Binding ElementName=mainWindow, Path=ConnectCaption}" Click="ConnectClick"></Button>
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Center">Имя подписчика:</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Center" Text="{Binding ElementName=mainWindow, Path=SubscriptionClientName }"></TextBox>
+        <Button x:Name="Button1" Grid.Column="0" Grid.Row="1" Height="25" Margin="5" IsEnabled="{Binding ElementName=mainWindow, Path=IsConnected}" Click="OnButton1Click">Кнопка события 1</Button>
+        <Button x:Name="Button2" Grid.Column="1" Grid.Row="1" Height="25" Margin="5" IsEnabled="{Binding ElementName=mainWindow, Path=IsConnected}" Click="OnButton2Click">Кнопка события 2</Button>
+        <Button x:Name="Subscribe1" Grid.Column="0" Grid.Row="2" Height="25" Margin="5" IsEnabled="{Binding ElementName=mainWindow, Path=IsConnected}" Click="OnSubscribe1Click">Подписаться на кнопку 1</Button>
+        <Button x:Name="Subscribe2" Grid.Column="1" Grid.Row="2" Height="25" Margin="5" IsEnabled="{Binding ElementName=mainWindow, Path=IsConnected}" Click="OnSubscribe2Click">Подписаться на кнопку 2</Button>
+        <Button x:Name="Unsubscribe1" Grid.Column="0" Grid.Row="3" Height="25" Margin="5" IsEnabled="{Binding ElementName=mainWindow, Path=IsConnected}" Click="OnUnsubscribe1Click">Отписаться от кнопки 1</Button>
+        <Button x:Name="Unsubscribe2" Grid.Column="1" Grid.Row="3" Height="25" Margin="5" IsEnabled="{Binding ElementName=mainWindow, Path=IsConnected}" Click="OnUnsubscribe2Click">Отписаться от кнопки 2</Button>
+        <Button x:Name="ClearLogBtn" Grid.Column="2" Grid.Row="3" Height="25" Margin="5" Width="100" HorizontalAlignment="Right" Click="OnClearLogBtnClick">Очистить лог</Button>
+        <ScrollViewer x:Name="ScrollViewer" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Margin="5" HorizontalScrollBarVisibility="Auto" ScrollChanged="OnScrollViewerScrollChanged">
+            <TextBlock Text="{Binding ElementName=mainWindow, Path=Log }"></TextBlock>
+        </ScrollViewer>
+    </Grid>
+</Window>
